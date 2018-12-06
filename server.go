@@ -256,7 +256,7 @@ func main() {
 
 	addr := flag.String("addr", "127.0.0.1:6379", "Redis地址端口")
 	passwd := flag.String("passwd", "", "Redis认证密码")
-	db := flag.Int("db", 0, "Redis数据库")
+	db := flag.Int("db", 0, "Redis数据库 (default 0)")
 	mworkers := flag.Int("mworker", 10, "信息收集任务worker数量")
 	sworkers := flag.Int("sworker", 90, "爆破任务worker数量")
 

@@ -25,22 +25,22 @@ func printString(value string, info string) {
 
 func main() {
 
-	addr := flag.String("addr", "127.0.0.1:6379", "Redis ip:port")
-	passwd := flag.String("passwd", "", "Redis password")
-	db := flag.Int("db", 0, "Redis DB")
+	addr := flag.String("addr", "127.0.0.1:6379", "Redis地址端口")
+	passwd := flag.String("passwd", "", "Redis认证密码")
+	db := flag.Int("db", 0, "Redis数据库 (default 0)")
 
-	url := flag.String("url", "", "Target url, eg:http://www.target.com")
-	isSubdomian := flag.Bool("subdomain", true, "is search subdomain")
-	isBruteSubdomain := flag.Bool("brudomain", false, "is brute subdomain")
-	firstDomain := flag.String("firstdomain", "", "First Domain")
-	isSubdir := flag.Bool("subdir", true, "is scan subdir")
-	dirType := flag.String("dirtype", "dir", "dir type can use: php,asp,aspx,jsp,dir,mdb,auto")
-	subdirType := flag.String("subdirtype", "dir", "dir type can use: php,asp,aspx,jsp,dir,mdb,auto")
-	subdirRec := flag.Bool("subdirrec", false, "Subdomain iterative brute subdirectory")
-	isSend := flag.Bool("send", false, "send targets")
-	isshow := flag.Bool("show", true, "show result")
+	url := flag.String("url", "", "目标URL，例如:http://www.target.com")
+	isSubdomian := flag.Bool("subdomain", true, "是否查询子域名")
+	isBruteSubdomain := flag.Bool("brudomain", true, "是否进行子域名爆破")
+	firstDomain := flag.String("firstdomain", "", "一级域名，如：target.com")
+	isSubdir := flag.Bool("subdir", true, "是否进行子目录爆破")
+	dirType := flag.String("dirtype", "dir", "目标域名使用什么字典进行子目录爆破: php,asp,aspx,jsp,dir,mdb,auto")
+	subdirType := flag.String("subdirtype", "auto", "目标子域名使用什么字典进行子目录爆破: php,asp,aspx,jsp,dir,mdb,auto")
+	subdirRec := flag.Bool("subdirrec", true, "是否对目标子域名也进行子目录爆破")
+	isSend := flag.Bool("send", false, "发送任务到Redis (default false)")
+	isshow := flag.Bool("show", true, "显示运行结果")
 
-	clear := flag.Bool("clear", false, "clear the redis")
+	clear := flag.Bool("clear", false, "清空Redis全部数据 (default false)")
 
 	flag.Parse()
 
@@ -204,5 +204,4 @@ func main() {
 			}
 		}
 	}
-
 }
