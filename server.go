@@ -254,11 +254,11 @@ func subWorker(client *redis.Client) {
 
 func main() {
 
-	addr := flag.String("addr", "127.0.0.1:6379", "Redis ip:port")
-	passwd := flag.String("passwd", "", "Redis password")
-	db := flag.Int("db", 0, "Redis DB")
-	mworkers := flag.Int("mworker", 10, "Main workers nums")
-	sworkers := flag.Int("sworker", 90, "Sub workers nums")
+	addr := flag.String("addr", "127.0.0.1:6379", "Redis地址端口")
+	passwd := flag.String("passwd", "", "Redis认证密码")
+	db := flag.Int("db", 0, "Redis数据库")
+	mworkers := flag.Int("mworker", 10, "信息收集任务worker数量")
+	sworkers := flag.Int("sworker", 90, "爆破任务worker数量")
 
 	flag.Parse()
 
@@ -273,22 +273,23 @@ func main() {
 		os.Exit(1)
 	}
 
-	target := new(data.Target)
-	target.Proto = "https"
-	target.Domain = "www.freebuf.com"
-	target.TargetId = base.GetRandomString()
-	target.Master = true
-	target.DomainId = base.GetRandomString()
-	target.Types = "baseinfo"
-	target.IsSubdomian = true
-	target.IsBruteSubdomain = true
-	target.IsDomainPan = false
-	target.FirstDomain = "freebuf.com"
-	target.IsSubdir = true
-	target.Subdir = ""
-	target.DirType = "php,dir"
-	target.SubdirType = "auto"
-	target.IsSubdirRec = true
+	// 测试
+	//target := new(data.Target)
+	//target.Proto = "https"
+	//target.Domain = "www.freebuf.com"
+	//target.TargetId = base.GetRandomString()
+	//target.Master = true
+	//target.DomainId = base.GetRandomString()
+	//target.Types = "baseinfo"
+	//target.IsSubdomian = true
+	//target.IsBruteSubdomain = true
+	//target.IsDomainPan = false
+	//target.FirstDomain = "freebuf.com"
+	//target.IsSubdir = true
+	//target.Subdir = ""
+	//target.DirType = "php,dir"
+	//target.SubdirType = "auto"
+	//target.IsSubdirRec = true
 
 	//base.Send2Redis(client,"targets", target)
 
